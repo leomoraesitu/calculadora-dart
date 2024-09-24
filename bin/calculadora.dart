@@ -4,9 +4,9 @@ import 'dart:io';
 void main(List<String> arguments) {
   print("CALCULADORA");
 
-  var numero1 = double.parse(lerConsole("Informe o primeiro número:"));
+  var numero1 = lerConsoleDouble("Informe o primeiro número:");
 
-  var numero2 = double.parse(lerConsole("Informe o segundo número:"));
+  var numero2 = lerConsoleDouble("Informe o segundo número:");
 
   var operacao = lerConsole("Informe a operação mateática (+, -, *, /):");
 
@@ -38,6 +38,16 @@ void calcular(String operacao, double numero1, double numero2) {
   print("O resultado é: $resultado");
 }
 
+double lerConsoleDouble(String texto){
+  var numero = double.tryParse(lerConsole(texto));
+  if(numero == null){
+    print("Numero informado incorreto, alterando para 0");
+    return 0.0;
+  } else{
+    return numero;
+  }
+}
+
 String lerConsole(String texto) {
   print(texto);
   var line = stdin.readLineSync(encoding: utf8);
@@ -57,5 +67,10 @@ double multiplicacao(double numero1, double numero2) {
 }
 
 double divisao(double numero1, double numero2) {
-  return numero1 / numero2;
+  if(numero2 == 0){
+    print("Não é possível dividir por 0!");
+    exit(0);
+  }else{
+    return numero1 / numero2;
+  }  
 }
