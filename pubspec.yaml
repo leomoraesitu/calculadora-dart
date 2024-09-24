@@ -1,0 +1,9 @@
+name: calculadora
+description: A simple Dart calculator project
+version: 1.0.0
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  # Adicione aqui as dependências do seu projeto, se houver
